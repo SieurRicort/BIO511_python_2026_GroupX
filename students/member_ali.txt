@@ -1,0 +1,113 @@
+my_int = 4
+print(my_int)
+print(type(my_int))
+
+seconed= 1.2
+print(seconed)
+print (type(seconed))
+
+thrid = "hello everyone"
+print(thrid)
+print(type(thrid))
+
+pool = 1>2 
+print(pool)
+print(type(pool))
+
+nonetype = None
+print(nonetype)
+print(type(nonetype))
+
+my_list = [1, 2, 3, 4]
+print(my_list)
+print(type(my_list))
+
+dictionary = {'A': 'iraq', 'J': 'spain', 'S': 'france'}
+print(dictionary)
+print(type(dictionary))
+
+#unmutible data types with normal brackets
+tuple = (1, 2, 3, 4)
+print(tuple)
+print(type(tuple))
+
+#mutible data types with curly brackets
+set = {1, 2, 3, 4}
+print(set)
+print(type(set))
+
+my_range = range(1, 10)
+print(my_range)
+print(type(my_range))
+
+
+
+
+x = 1
+print(x) 
+
+y = 2
+print(y)    
+
+if x == 1:
+    print("x is equal to 1")
+
+if y == x:
+    print("y is equal to x")
+else: 
+    print("y is not equal to x")
+print("try again with better luck next time")
+
+my_string = "variablestuesday"
+print(len(my_string))
+
+if my_string == ():
+    print("my_string is empty")
+else:
+    print("my_string is not empty")
+
+
+
+if my_int > 0:
+    print("my_int is positive")
+elif my_int < 0:
+    print("my_int is negative")
+else:
+    print("my_int is zero")
+
+
+#Type gate + nested classification
+
+my_sequence = [10, 20, 30]
+
+if isinstance(my_sequence, (list, tuple, range)):
+    if len(my_sequence) == 0:
+        print("empty")
+    elif len(my_sequence) == 1:
+        print("single item")
+    else:
+        print("multiple items")
+else:
+    print("wrong type for this task")
+
+
+# the use of in and none
+read_counts = {"sample_A": 1520000, "sample_B": 830000, "sample_C": None}
+print("sample_A" in read_counts) # prints True
+
+sample = ("sample_B")
+
+print(sample)
+
+
+if sample not in read_counts:
+    print("unknown sample")
+elif read_counts[sample] is None:
+    print("sequencing failed")
+elif read_counts[sample] >= 1000000:
+    print("enough reads")
+else:
+    print("too few reads")
+
+
+    
