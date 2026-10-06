@@ -1,8 +1,9 @@
-# Exo 1 ---
+# Prac1 ---
 
+## EXO 1 ------
 ```{python}
 my_int = 4
-print(my_int)
+print(myint)
 ```
 
 
@@ -23,6 +24,7 @@ age={26, 15, 23}
 ```
 
 
+# Exo 2 ------
 
 ```{python}
 # If ElseIf
@@ -49,6 +51,7 @@ else:
         print("multiple items")
 ```
 
+# Exo 3 ------
 
 ```{python}
 # Type gate + Nested classification
@@ -72,7 +75,7 @@ else:
 
 ```
 
-
+# Bonus --------
 ```{python}
 # GC content
 
