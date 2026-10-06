@@ -1,0 +1,29 @@
+# Exo 1 ---
+
+```{python}
+my_int = 4
+print(my_int)
+```
+
+
+```{python}
+# Different variables
+import math
+my_age=23
+my_height="162 cm"
+am_i_a_boi=True
+pi= math.pi
+void = None
+list1 = ["sacha", "ali", "love"]
+tupple1 = ("one finger", "two fingers")
+siecle= range(100)
+nationality = {"French" : "Sacha","Greek" : "Vasilis","Spanish" : "Jorge","Arabic" : "Ali"}
+age={26, 15, 23}
+
+```
+
+
+
+```{python}
+# If ElseIf
+```
