@@ -26,4 +26,68 @@ age={26, 15, 23}
 
 ```{python}
 # If ElseIf
+
+if len(my_height) == 0:
+    print("empty")
+else:
+    print("Not empty")
+
+if my_age == 0:
+    print("0")
+elif my_age >= 0:
+        print("greater than 0")
+else:
+        print("lesser than 0")
+
+if type(list1) != list:
+    print("Wrong type idiot")
+elif len(list1) == 0:
+    print("Empty list")
+elif len(list1) == 1:
+        print("Single item")
+else:
+        print("multiple items")
+```
+
+
+```{python}
+# Type gate + Nested classification
+
+read_counts = {"sample_A": 1520000, "sample_B": 830000, "sample_C": None} # Dictionnary
+
+print("sample_A" in read_counts) # If Dictio contains sample_A returns True
+sample = "sample_A"
+passed_qc = False
+
+if sample not in read_counts:
+    print("Unkown sample")
+elif read_counts[sample] == None:
+    print("Sequencing failed")
+elif read_counts[sample] >= 1000000 and passed_qc == True:
+    print("Ready for analysis")
+elif passed_qc != True:
+    print("QC didn't pass")
+else: 
+    print("Not enough reads")
+
+```
+
+
+```{python}
+# GC content
+
+sequence = "ATGCGTACTTAGCAAT"
+gc_count = 0
+
+if sequence[5] == "G" or sequence[5] == "C":
+    print("GC")
+else: print("Not GC")
+
+for i in sequence:
+    if i in ("G", "C"):
+        gc_count += 1
+
+gc_content = (gc_count/len(sequence))*100
+
+print("GC content is equal to ",gc_content,"%")
 ```
