@@ -130,13 +130,14 @@ for name_normal, roots_normal in name_roots.items():
 
 
 ```{python}
+# /!\ NEEDS name_roots from # Exo5
 # 1. Collect unique values in roots_normal through dictionnary
 unique_roots = [] # empty list
 
 for roots_list in name_roots.values(): # iterate through values in the dictionary (list)
     for roots_str1 in roots_list: # iterate through items in the list (str)
         if roots_str1 not in unique_roots:
-            unique_roots.append(roots_str1) # add a new item (str) in the nique_roots if no other values matches it
+            unique_roots.append(roots_str1) # add a new item (str) in the unique_roots if no other values matches it
 
 print(unique_roots)
 
@@ -149,19 +150,22 @@ for roots_str2 in unique_roots: # iterate through items in the list (str)
         reverse_dict[roots_str2] = [] # add a new key (str) in reverse_dict if no other values matches it. its value is an empty list. VERY IMPORTANT BECAUSE TO USE APPEND LATER, YOU NEED THE VALUE TO BE OF THE LIST TYPE
 
 # 3. Fill up values with names matching with each unique keys
-for root_key in reverse_dict.keys(): # iterate through keys of reverse_dict
+
+for name_normal, root_value in name_roots.items(): # go through every items of the dictionnary
+    for root_key in root_value: # go through every values (roots) of the first dictionary
+            reverse_dict[root_key].append(name_normal) # name_normal is linked to root_normal. reverse dictionary contains all unique roots in the normal dictionary. Therefore, we can append the name of a person (a value) into the corresponding key that is their roots in reverse dictionary.
+
+print(reverse_dict)
+
+# 3.bis: alternative
+## reset values of reverse dictionary to not create duplicate values
+for root_key in reverse_dict.keys():
+    reverse_dict[root_key] = []
+
+for root_key, name_value in reverse_dict.items(): # iterate through dictionnary
     for name_normal, root_value in name_roots.items(): # get both keys and values of name_roots dict
-        if root_key in root_value: # when the key is a part of the value of a key from the name_roots dict -> pass
-            reverse_dict[root_key].append(name_normal) # Add every names from name_roots as a value of the roots keys in the reverse dictionary
-
-# 3.bis alterative
-for root_key in reverse_dict.keys(): # reset values
-    reverse_dict[root_key] = [] # reset values
-
-for name_normal, root_value in name_roots.items(): # get both keys and values of name_roots dictionary
-    for root_key in reverse_dict.keys(): # loop through all keys in reverse dic
         if root_key in root_value:
-            reverse_dict[root_key].append(name_normal)
-            
+            name_value.append(name_normal)
+
 print(reverse_dict)
 ```
