@@ -3,7 +3,7 @@
 ## EXO 1 ------
 ```{python}
 my_int = 4
-print(myint)
+print(my_int)
 ```
 
 
