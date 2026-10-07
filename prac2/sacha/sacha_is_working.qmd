@@ -76,27 +76,27 @@ codons = ['CCA', 'TGT', 'GTA', 'TAG'] # Target codons to find
 
 # Script
 ## Given example
-for sequence1 in sequences:
-  for codon1 in codons:
-    if codon1 in sequence1:
-      print(codon1 + " is in " + sequence1 + " at least once.")
+for sequence in sequences:
+  for codon in codons:
+    if codon in sequence:
+      print(codon + " is in " + sequence + " at least once.")
 
 ## Nested loops 2.
 start_codon = "ATG"
 stop_codons = ["TAA", "TAG", "TGA"]
 
-for i, seq in enumerate(sequences):
-    start = seq.find(start_codon)
-    if start == -1:
-        print(f"Sequence {i}: start codon was not found")
-        continue
-    for pos in range(start, len(seq) - 2, 3):
-        codon = seq[pos:pos + 3]
-        if codon in stop_codons:
+for i, seq in enumerate(sequences): # Enumerates = INT + STR for one item of the list (positition, content)
+    start = seq.find(start_codon) # Looking for anything that matches start_codon inside samples from sequences data. Stores it in start
+    if start == -1: # This is when there is no sample containing the sequence of start_codon within the data.
+        print(f"Sequence {i}: start codon was not found") # Notifies you
+        continue # Go through the next iteration without doing downstream checks
+    for pos in range(start, len(seq) - 2, 3): # Create a range of "position" for codons the following: start_codon is 3 nt in a row at a given position (start), any other codon is made of 3 nucleotides after that (, 3 at the end) until the 3 last nt of a sample (len(seq) -2).
+        codon = seq[pos:pos + 3] # Actually creates the variable that stores the STR of a codon starting from start_codon up to final codon within a sequence in our data
+        if codon in stop_codons: # If one of them matches with the list stop_codons -> notifies the user
             print(f"Sequence {i}: start {start_codon} at {start}, "
                   f"stop {codon} at {pos} (ORF length {pos + 3 - start} nt)")
-            break
-    else:  # no break happened, so no in-frame stop was found
+            break # Stop and go for another sequence in our data
+    else:  # A start_codon was found but no other codon matched with stop_codons -> notifies the user
         print(f"Sequence {i}: start codon found but no in-frame stop codon")
 
 print("Process finished --- %s seconds ---" % (time.time() - start_time))
