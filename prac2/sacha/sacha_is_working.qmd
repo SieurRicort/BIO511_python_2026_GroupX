@@ -1,0 +1,109 @@
+# Starting prac2 about loops !!
+
+## Exo1
+```{python}
+# Make a list
+list1=["Wow","Amazing","okéoké","Yessir","Gougougaga","ImStrong","You're not","Yay","Done"]
+# Print the list
+print(list1)
+# Print the first item of that list
+print(list1[0])
+```
+
+## Exo2: normie loops
+```{python}
+# Create a list of 7 items
+list2=["Hi","my","name","is","sacha","ernesto","alessandro"]
+# Print index then print item once for loop breaks
+for i in list2:
+    print(list2.index(i)) # .index allows us to retrieve the position of the ith item in the list
+    if list2.index(i) >= 5: # the for loop will break as soon as we reach the 6th item (because numeration starts at 0 !!!!!)
+        print(i)
+        break
+
+```
+
+## Exo3: while loops vs for loops
+
+```{python}
+# Variables
+sequence = 'GATTACAGAACTGATAC' # Create a sample
+count_A=0 # How many A did the loop counted so far
+position=0 # How many bp did the loop go through
+how_many_A = 3 # How many A do i want to count up to
+
+# With while loop
+while count_A < how_many_A and position < len(sequence): # Will break once loop found the requested amount of A or when all sample has been analysed
+    if sequence[position] == "A":
+        count_A += 1
+        if count_A == how_many_A:
+            print("Found as many As as specified by the user (" + str(how_many_A) + ").")
+    position += 1
+    if position == len(sequence):
+        print ("Reached the end of the sequence (",position,"bp).")
+print("In while loop: Found that many As: " + str(count_A))
+print("In while loop: Reading sequence went to that bp's position: " + str(position))
+
+
+# With for
+count_A=0
+position=0
+how_many_A = 10 # How many A do i want to count up to
+
+for bp in sequence:
+    if count_A == how_many_A:
+        print("Found as many As as specified by the user (" + str(how_many_A) + ").")
+        break # Will break loop once it found as many As as requested
+    elif bp in ("A"):
+        count_A += 1
+    position += 1
+    if position == len(sequence):
+        print ("Reached the end of the sequence (",position,"bp).")
+        break # Will break the loop once the whole sample is analysed
+print("In for loop: Found that many As: " + str(count_A))
+print("In for loop: Reading sequence went to that bp's position: " + str(position))
+```
+
+# Exo4: Nested loops
+
+```{python}
+import time
+start_time = time.time()
+
+# Variables
+sequences = ['ATCTGAGTCCACACATG', 'GCGTCGTGCGATGTTCACGTTGAT', 'CAGTAGTACTCAGT', 'GGTATGCTAGACGAGATCTAATA', 'ATGTTTTTTTTTTAG', 'TAAAGCAGCAGCTGAATGTAA'] # Different sequences
+codons = ['CCA', 'TGT', 'GTA', 'TAG'] # Target codons to find
+
+# Script
+## Given example
+for sequence1 in sequences:
+  for codon1 in codons:
+    if codon1 in sequence1:
+      print(codon1 + " is in " + sequence1 + " at least once.")
+
+## Nested loops 2.
+start_codon = "ATG"
+stop_codons = ["TAA", "TAG", "TGA"]
+
+for i, seq in enumerate(sequences):
+    start = seq.find(start_codon)
+    if start == -1:
+        print(f"Sequence {i}: start codon was not found")
+        continue
+    for pos in range(start, len(seq) - 2, 3):
+        codon = seq[pos:pos + 3]
+        if codon in stop_codons:
+            print(f"Sequence {i}: start {start_codon} at {start}, "
+                  f"stop {codon} at {pos} (ORF length {pos + 3 - start} nt)")
+            break
+    else:  # no break happened, so no in-frame stop was found
+        print(f"Sequence {i}: start codon found but no in-frame stop codon")
+
+print("Process finished --- %s seconds ---" % (time.time() - start_time))
+```
+
+# Exo5: 
+
+```{python}
+
+```
