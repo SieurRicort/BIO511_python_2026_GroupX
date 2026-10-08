@@ -1,0 +1,112 @@
+# Prac3: Functions
+## Setup:
+
+```{python}
+# Provided inputs
+nums = [3, -1, 7, 2, 9, 0, 4]
+limit = 4
+text = "Room 101: bring 2 apples & 1 banana."
+
+# Global variables
+count = 999
+summary = "unset"
+result = "unset"
+```
+# Exo1: Count numbers above a limit
+```{python}
+def count_above(seq, lim):
+    count = 0
+    for value in seq:
+        if value > lim:
+            count += 1
+    return count
+
+print(count)
+print(count_above(nums, limit)) # By calling the function then saying print count which is a variable defined both in function and globally, REPL only displays last occurence. do print(function(param)) to show what a function returns
+print(count)
+```
+
+# Summarise a text
+
+```{python}
+def summarize_text(s): # Define the function
+# Define counters
+    count_int = 0
+    count_str = 0
+    count_other = 0
+# Create empty dict    
+    summary = {
+        'digits' : [],
+        'letters' : [],
+        'others' : []
+    }
+# Loop through characters of a string and check their type
+    for char in s:
+        if char.isalpha() == True:
+            count_str += 1
+        elif char.isnumeric() == True:
+            count_int += 1
+        else: count_other += 1
+# Assign counts to the value for each corresponding key
+    summary['letters'] = count_str
+    summary['digits'] = count_int
+    summary['others'] = count_other
+# calculates length of the input
+    total = count_other + count_str + count_int
+    print(f"Total characters read through the function = {total} while input was = {len(s)} characters long.")
+    return summary
+
+print(summary)
+print(summarize_text(text)) # without print would be overwritten in REPL
+print(summary)
+```
+
+# Exo3:  Aggregate with a mode
+
+```{python}
+def aggregate(seq, mode, threshold):
+    # condition = parameter mode should be one of those otherwise function stops
+    mode_condition = ("sum", "count", "max")
+    if mode not in mode_condition:
+        print("mode parameter should be either sum, count or max.")
+        return None
+    # preset a value for results depending on the input
+    if mode in ("sum", "count"):
+        results = 0
+    else: results = 0
+    # core part of the function
+    for n in seq:
+        if n < 0:
+            continue
+        elif n >= threshold:
+            if mode == "sum":
+                results = results + n
+            elif mode == "count":
+                results += 1
+            elif n > results:
+                results = int(n)
+    print(f"By using the {mode} method, the result of aggregator is {results}")
+    return
+print(result)
+aggregate(nums, "sum", limit)
+aggregate(nums, "count", limit)
+aggregate(nums, "max", limit)
+print(result)
+```
+
+# Exo4: Errors, try/except
+
+```{python}
+values = ['10', '5', 'hello', '8', 'three', '2', -10]
+
+def int_conversion(list):
+    for x in list:
+        try: 
+            number = int(x)
+            print(number)
+        except ValueError:
+            print(f"Skipping invalid value: {x}.")
+    return
+
+int_conversion(values)
+```
