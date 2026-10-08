@@ -123,7 +123,7 @@ print(name_roots)
 for name_normal, roots_normal in name_roots.items():
     print(name_normal)
     print(roots_normal)
-    print ('french' in roots_normal) # Will return true false when iterating through the dictionnary
+    print ('french' in roots_normal) # Will return true orfalse when iterating through the dictionnary
 ```
 
 # Exo6 : Reverse the dictionnary
