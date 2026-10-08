@@ -93,3 +93,20 @@ aggregate(nums, "count", limit)
 aggregate(nums, "max", limit)
 print(result)
 ```
+
+# Exo4: Errors, try/except
+
+```{python}
+values = ['10', '5', 'hello', '8', 'three', '2', -10]
+
+def int_conversion(list):
+    for x in list:
+        try: 
+            number = int(x)
+            print(number)
+        except ValueError:
+            print(f"Skipping invalid value: {x}.")
+    return
+
+int_conversion(values)
+```
