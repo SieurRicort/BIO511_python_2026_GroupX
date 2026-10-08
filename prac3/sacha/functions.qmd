@@ -22,7 +22,7 @@ def count_above(seq, lim):
     return count
 
 print(count)
-print(count_above(nums, limit)) # By calling the function then saying print count which is a variable defined both in function and globally, REPL only displays last occurence. do print(function(param)) to show what a function returns
+print(count_above(nums, limit)) # Need to use print in order to see it in cell code. (sharing name with a variable from global)
 print(count)
 ```
 
@@ -30,34 +30,27 @@ print(count)
 
 ```{python}
 def summarize_text(s): # Define the function
-# Define counters
-    count_int = 0
-    count_str = 0
-    count_other = 0
-# Create empty dict    
+# Create dictionary with values = 0. If empty list the loop doesnt work
     summary = {
-        'digits' : [],
-        'letters' : [],
-        'others' : []
+        'digits' : 0,
+        'letters' : 0,
+        'others' : 0
     }
 # Loop through characters of a string and check their type
     for char in s:
-        if char.isalpha() == True:
-            count_str += 1
-        elif char.isnumeric() == True:
-            count_int += 1
-        else: count_other += 1
-# Assign counts to the value for each corresponding key
-    summary['letters'] = count_str
-    summary['digits'] = count_int
-    summary['others'] = count_other
+        if char.isdigit():
+            summary["digits"] += 1
+        elif char.isalpha():
+            summary["letters"] += 1
+        else:
+            summary["others"] += 1
 # calculates length of the input
-    total = count_other + count_str + count_int
-    print(f"Total characters read through the function = {total} while input was = {len(s)} characters long.")
+    total = sum(summary.values())
+    print(f"{total} characters read through the function while input was {len(s)} characters long.")
     return summary
 
 print(summary)
-print(summarize_text(text)) # without print would be overwritten in REPL
+print(summarize_text(text))
 print(summary)
 ```
 
@@ -68,39 +61,44 @@ def aggregate(seq, mode, threshold):
     # condition = parameter mode should be one of those otherwise function stops
     mode_condition = ("sum", "count", "max")
     if mode not in mode_condition:
-        print("mode parameter should be either sum, count or max.")
-        return None
-    # preset a value for results depending on the input
-    if mode in ("sum", "count"):
-        results = 0
-    else: results = 0
+        raise ValueError("mode parameter should be either sum, count or max.")
+    # preset a value for result depending on the input
+    if mode == "max":
+        result = None 
+    else: result = 0
     # core part of the function
     for n in seq:
         if n < 0:
             continue
-        elif n >= threshold:
+        if n >= threshold:
             if mode == "sum":
-                results = results + n
+                result += n
             elif mode == "count":
-                results += 1
-            elif n > results:
-                results = int(n)
-    print(f"By using the {mode} method, the result of aggregator is {results}")
-    return
+                result += 1
+            elif result is None or n > result:
+                result = n
+
+    print(f"By using the aggregator at a threshold of {threshold}, the result is {result} for the {mode} mode")
+    return result
+
 print(result)
-aggregate(nums, "sum", limit)
-aggregate(nums, "count", limit)
-aggregate(nums, "max", limit)
+
+sum_list = aggregate(nums, "sum", limit); print(sum_list)
+count_n = aggregate(nums, "count", limit); print(count_n)
+max_value = aggregate(nums, "max", limit); print(max_value)
+wow = aggregate(nums,"max",100); print(wow)
+
 print(result)
+
 ```
 
 # Exo4: Errors, try/except
 
 ```{python}
-values = ['10', '5', 'hello', '8', 'three', '2', -10]
+values = ['10', '5', 'hello', '8', 'three', '2', -10, 'gaga']
 
-def int_conversion(list):
-    for x in list:
+def int_conversion(numbers):
+    for x in numbers:
         try: 
             number = int(x)
             print(number)
