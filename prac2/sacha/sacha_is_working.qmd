@@ -133,6 +133,7 @@ for name_normal, roots_normal in name_roots.items():
 # /!\ NEEDS name_roots from # Exo5
 # 1. Collect unique values in roots_normal through dictionnary
 unique_roots = [] # empty list
+# HERE YOU ARE ABLE TO CREATE A SET (which contains only unique items) THEREFORE NO NEED FOR AN IF STATEMENT, ONLY APPEND.
 
 for roots_list in name_roots.values(): # iterate through values in the dictionary (list)
     for roots_str1 in roots_list: # iterate through items in the list (str)
