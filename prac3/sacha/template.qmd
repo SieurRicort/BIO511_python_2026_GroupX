@@ -1,6 +1,20 @@
-# Prac3: Functions
+---
+title: "Python practice n°3"
+description: "Learning Python functions"
+author: "Sacha Ricort"
 
-### Setup:
+date: "2026-10-08"
+date-modified: today
+
+metadata:
+  analysis-type: "Programming"
+  status: "Finished"
+  template-version: "0.2.1"
+---
+
+------------------------------------------------------------------------
+
+### Setup
 
 ```{python}
 # Provided inputs
@@ -14,7 +28,22 @@ summary = "unset"
 result = "unset"
 ```
 
-## Exo1: Count numbers above a limit
+```{python}
+#|echo: false
+# Used to display the outputs below a command in ### Results
+import sys
+sys.path.insert(0, "scripts")
+import display_results          
+```
+
+## Counting numbers above a limit
+
+::: goal-block
+**Goal**\
+Define a function to count numbers above a set limit
+:::
+
+### Script {.code-heading}
 
 ```{python}
 # Build the function
@@ -24,20 +53,33 @@ def count_above(seq, lim):
         if value > lim:
             count += 1
     return count
+```
 
-# Results
+### Results {.output-heading}
+
+```{python}
+#|echo: false
+%%show
 print(count)
-print(count_above(nums, limit))
+count_above(nums, limit)
 print(count)
 ```
 
-I noticed the following: If ther var returned from a function has a matching name in global calling the function then print(var) would silence the returned item.
+::: {.callout-note collapse="true"}
+### Questions
 
-> Why is the global count still 999, even though the function set a variable called count to 0 and then increased it?
+**Why is the global count still 999, even though the function set a variable called count to 0 and then increased it?**\
+count in global != count inside a function
+:::
 
--\> count in global != count inside a function
+## Summarise a text
 
-## Exo2: Summarise a text
+::: goal-block
+**Goal**\
+Define a function to return a dictionary[type] = how many
+:::
+
+### Script {.code-heading}
 
 ```{python}
 def summarize_text(s):
@@ -59,17 +101,35 @@ def summarize_text(s):
     total = sum(summary.values())
     print(f"{total} characters read through the function while input was {len(s)} characters long.")
     return summary
+```
 
+### Results {.output-heading}
+
+```{python}
+#| echo: false
+%%show
 print(summary)
-print(summarize_text(text))
+summarize_text(text)
 print(summary)
 ```
 
-> What counts as "other" in text? Check that the numbers add up to the length of the string using len(text).
 
--\> Anything that is not in alphabet \[aA-zZ\] nor numerical \[0-9\]. -\> Added a total calculator within the function
+::: {.callout-note collapse="true"}
+### Personal notes
 
-## Exo3: Aggregate with a mode
+**What counts as "other" in text? Check that the numbers add up to the length of the string using len(text).**\
+Anything that is not in alphabet \[aA-zZ\] nor numerical \[0-9\]\
+Added a total calculator within the function
+:::
+
+## Aggregator
+
+::: goal-block
+**Goal**\
+Create an aggregator with multiple modes
+:::
+
+### Script {.code-heading}
 
 ```{python}
 def aggregate(seq, mode, threshold):
@@ -95,7 +155,13 @@ def aggregate(seq, mode, threshold):
 
     print(f"By using the aggregator at a threshold of {threshold}, the result is {result} for the {mode} mode")
     return result
+```
 
+### Results {.output-heading}
+
+```{python}
+#| echo: false
+%%show
 print(result)
 
 print(aggregate(nums, "sum", limit))
@@ -105,16 +171,24 @@ print(aggregate(nums,"max",100))
 #print(aggregate(nums,"nothing",limit)) test error message with wrong mode input
 
 print(result)
-
 ```
 
-Added a raise.ValueError() to do the following: Stops the function. Provides a message to the user.
 
-> What does aggregate(nums, "max", 100) return, and why?
+::: {.callout-note collapse="true"}
+### Personal notes
 
+**Question**\
 100 is above all numbers contained in the list nums therefore it returns None
+:::
 
-## Exo4: Errors, try/except
+## Error handling
+
+::: goal-block
+**Goal**\
+Learn how to work around errors within a script
+:::
+
+### Script {.code-heading}
 
 ```{python}
 # List of str
@@ -128,6 +202,33 @@ def int_conversion(numbers):
         except ValueError:
             print(f"Skipping invalid value: {x}.")
     return
+```
 
+### Results {.output-heading}
+
+```{python}
+#| echo: false
+%%show
 int_conversion(values)
 ```
+
+
+------------------------------------------------------------------------
+
+::: {.callout-note collapse="true"}
+### Environment
+
+```{python}
+#| echo: false
+import sys
+sys.path.insert(0, "scripts")
+from my_env import environment_table
+
+# ---- EDIT PER ANALYSIS (leave empty if unused) ----
+tools = []      # e.g. ["samtools", "bwa", "STAR"]
+packages = []   # e.g. ["pandas", "numpy"]
+# ---------------------------------------------------
+
+environment_table(tools=tools, packages=packages)
+```
+:::

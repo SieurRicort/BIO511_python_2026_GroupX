@@ -1,59 +1,56 @@
 ---
-title: "Python - Practice 3"
-description: "Functions"
-author: "Sacha Ricort"
+title: "Title"
+description: "Description"
+author: "Your name"
 
 date: "2026-10-08"
 date-modified: today
 
 metadata:
   analysis-type: "Bioinformatics"
-  status: "Finished"
-  template-version: "0.2.0"
+  status: "Planned/In progress/On hold/Under review/Finished/Archived"
+  template-version: "0.2.1"
 ---
 
 ------------------------------------------------------------------------
 
-### Setup:
+### Setup
 
 ```{python}
-# Provided inputs
-nums = [3, -1, 7, 2, 9, 0, 4]
-limit = 4
-text = "Room 101: bring 2 apples & 1 banana."
-
-# Global variables
-count = 999
-summary = "unset"
-result = "unset"
+# Setup global variables, import some functions, do your stuff
 ```
 
-## Counting numbers above a limit
+```{python}
+#|echo: false
+# Used to display the outputs below a command in ### Results
+import sys
+sys.path.insert(0, "scripts")
+import display_results          
+```
+
+## Analysis name
 
 ::: goal-block
 **Goal**\
-Learn how to define a function
+Why?\
+How?\
+Expected outcomes?
 :::
 
 ### Script {.code-heading}
 
 ```{python}
-# Build the function
-def count_above(seq, lim):
-    count = 0
-    for value in seq:
-        if value > lim:
-            count += 1
-    return count
+# Code here
 ```
 
 ### Results {.output-heading}
 
 ```{python}
-print(count)
-print(count_above(nums, limit))
-print(count)
-# Display only the results worth keeping
+#|echo: false
+%%show
+# Display what command ran with its output directly below
+# MUST START WITH %%show
+# Add a command here
 ```
 
 ------------------------------------------------------------------------
@@ -62,7 +59,11 @@ print(count)
 ### Personal notes
 
 **Observations**\
-Code cell is annoying when calling global variable and the return value of a function with the same name
+Add something here\
+**Questions/limitations**\
+Add something here\
+**Perspectives**\
+Add something here
 :::
 
 ------------------------------------------------------------------------
