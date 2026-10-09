@@ -59,22 +59,24 @@ bc function sets variable locally, global variables are not affected
 Print the global summary again.
 """
 
-s = "99 luftballons"
+#s = "99 luftballons"
 def summarize_text(s):
-	dig_val = 0
-	let_val = 0
-	oth_val = 0
-	summary = {"digits":dig_val, "letters":let_val, "other":oth_val}	 
-	# Iterate over characters in s 
+	#dig_val = 0
+	#let_val = 0
+	#oth_val = 0
+	#summary = {"digits":dig_val, "letters":let_val, "other":oth_val}	 
+	summary = {"digits":0, "letters":0, "other":0}
+ # Iterate over characters in s 
 	for char in s:
 		if s.isdigit() == True:
 			#"digits":+1
 			#summary[(:+1),,]
 			#summary(1, +1)
-			dig_val = +1
+			#dig_val = +1
+			summary["digits"] += 1
 		elif s.isalpha() == True:
-			let_val = +1
-		elif s.isalpha() != True and s.isdigit() != True: oth_val = +1
+			summary["letters"] += 1
+		elif s.isalpha() != True and s.isdigit() != True: summary["others"] += 1
 		#else: oth_val = +1
 	#summary = {"digits":dig_val, "letters":let_val, "other":oth_val}
 	return(summary)
