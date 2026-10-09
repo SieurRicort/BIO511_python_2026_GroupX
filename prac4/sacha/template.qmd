@@ -9,7 +9,7 @@ date-modified: today
 metadata:
   analysis-type: "Bioinformatics"
   status: "Planned/In progress/On hold/Under review/Finished/Archived"
-  template-version: "0.2.1"
+  template-version: "0.3.0"
 ---
 
 ------------------------------------------------------------------------
@@ -52,8 +52,6 @@ Expected outcomes?
 # MUST START WITH %%show
 # Add a command here
 ```
-
-------------------------------------------------------------------------
 
 ::: {.callout-note collapse="true"}
 ### Personal notes
