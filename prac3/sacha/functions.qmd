@@ -143,15 +143,14 @@ def aggregate(seq, mode, threshold):
     else: result = 0
     # core part of the function
     for n in seq:
-        if n < 0:
+        if n < 0 or n < threshold:
             continue
-        if n >= threshold:
-            if mode == "sum":
-                result += n
-            elif mode == "count":
-                result += 1
-            elif result is None or n > result:
-                result = n
+        elif mode == "sum":
+            result += n
+        elif mode == "count":
+            result += 1
+        elif result is None or n > result:
+            result = n
 
     print(f"By using the aggregator at a threshold of {threshold}, the result is {result} for the {mode} mode")
     return result
