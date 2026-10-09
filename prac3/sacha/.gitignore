@@ -1,0 +1,40 @@
+# Rendered reports: share separately after checking for sensitive content
+# Excludes everything inside the output-dir set in _quarto.yml, except one example
+html_output/*
+*.html
+!html_output/template.html
+
+# Python caches
+__pycache__/
+*.pyc
+
+# Quarto / Jupyter generated files
+**/*.quarto_ipynb
+.quarto/
+*_files/
+.ipynb_checkpoints/
+.jupyter_cache/
+
+# Secrets and local config
+.env
+*.key
+*.pem
+credentials*
+
+# Editor / OS
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Data (to adapt)
+data/
+*.fastq
+*.fastq.gz
+*.fq.gz
+*.bam
+*.cram
+*.vcf.gz
+*.h5ad
+*.rds
+
+/.quarto/

@@ -1,5 +1,6 @@
 # Prac3: Functions
-## Setup:
+
+### Setup:
 
 ```{python}
 # Provided inputs
@@ -12,8 +13,11 @@ count = 999
 summary = "unset"
 result = "unset"
 ```
-# Exo1: Count numbers above a limit
+
+## Exo1: Count numbers above a limit
+
 ```{python}
+# Build the function
 def count_above(seq, lim):
     count = 0
     for value in seq:
@@ -21,15 +25,22 @@ def count_above(seq, lim):
             count += 1
     return count
 
+# Results
 print(count)
-print(count_above(nums, limit)) # Need to use print in order to see it in cell code. (sharing name with a variable from global)
+print(count_above(nums, limit))
 print(count)
 ```
 
-# Summarise a text
+I noticed the following: If ther var returned from a function has a matching name in global calling the function then print(var) would silence the returned item.
+
+> Why is the global count still 999, even though the function set a variable called count to 0 and then increased it?
+
+-\> count in global != count inside a function
+
+## Exo2: Summarise a text
 
 ```{python}
-def summarize_text(s): # Define the function
+def summarize_text(s):
 # Create dictionary with values = 0. If empty list the loop doesnt work
     summary = {
         'digits' : 0,
@@ -54,7 +65,11 @@ print(summarize_text(text))
 print(summary)
 ```
 
-# Exo3:  Aggregate with a mode
+> What counts as "other" in text? Check that the numbers add up to the length of the string using len(text).
+
+-\> Anything that is not in alphabet \[aA-zZ\] nor numerical \[0-9\]. -\> Added a total calculator within the function
+
+## Exo3: Aggregate with a mode
 
 ```{python}
 def aggregate(seq, mode, threshold):
@@ -83,18 +98,26 @@ def aggregate(seq, mode, threshold):
 
 print(result)
 
-sum_list = aggregate(nums, "sum", limit); print(sum_list)
-count_n = aggregate(nums, "count", limit); print(count_n)
-max_value = aggregate(nums, "max", limit); print(max_value)
-wow = aggregate(nums,"max",100); print(wow)
+print(aggregate(nums, "sum", limit))
+print(aggregate(nums, "count", limit))
+print(aggregate(nums, "max", limit))
+print(aggregate(nums,"max",100))
+#print(aggregate(nums,"nothing",limit)) test error message with wrong mode input
 
 print(result)
 
 ```
 
-# Exo4: Errors, try/except
+Added a raise.ValueError() to do the following: Stops the function. Provides a message to the user.
+
+> What does aggregate(nums, "max", 100) return, and why?
+
+100 is above all numbers contained in the list nums therefore it returns None
+
+## Exo4: Errors, try/except
 
 ```{python}
+# List of str
 values = ['10', '5', 'hello', '8', 'three', '2', -10, 'gaga']
 
 def int_conversion(numbers):

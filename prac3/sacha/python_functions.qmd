@@ -1,0 +1,86 @@
+---
+title: "Python - Practice 3"
+description: "Functions"
+author: "Sacha Ricort"
+
+date: "2026-10-08"
+date-modified: today
+
+metadata:
+  analysis-type: "Bioinformatics"
+  status: "Finished"
+  template-version: "0.2.0"
+---
+
+------------------------------------------------------------------------
+
+### Setup:
+
+```{python}
+# Provided inputs
+nums = [3, -1, 7, 2, 9, 0, 4]
+limit = 4
+text = "Room 101: bring 2 apples & 1 banana."
+
+# Global variables
+count = 999
+summary = "unset"
+result = "unset"
+```
+
+## Counting numbers above a limit
+
+::: goal-block
+**Goal**\
+Learn how to define a function
+:::
+
+### Script {.code-heading}
+
+```{python}
+# Build the function
+def count_above(seq, lim):
+    count = 0
+    for value in seq:
+        if value > lim:
+            count += 1
+    return count
+```
+
+### Results {.output-heading}
+
+```{python}
+print(count)
+print(count_above(nums, limit))
+print(count)
+# Display only the results worth keeping
+```
+
+------------------------------------------------------------------------
+
+::: {.callout-note collapse="true"}
+### Personal notes
+
+**Observations**\
+Code cell is annoying when calling global variable and the return value of a function with the same name
+:::
+
+------------------------------------------------------------------------
+
+::: {.callout-note collapse="true"}
+### Environment
+
+```{python}
+#| echo: false
+import sys
+sys.path.insert(0, "scripts")
+from my_env import environment_table
+
+# ---- EDIT PER ANALYSIS (leave empty if unused) ----
+tools = []      # e.g. ["samtools", "bwa", "STAR"]
+packages = []   # e.g. ["pandas", "numpy"]
+# ---------------------------------------------------
+
+environment_table(tools=tools, packages=packages)
+```
+:::

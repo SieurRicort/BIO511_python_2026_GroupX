@@ -1,0 +1,73 @@
+
+/* Main analysis headings */
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* Document-level description */
+.document-description {
+  font-size: 16px;
+  color: #606b78;
+  line-height: 1.6;
+  margin-top: -8px;
+  margin-bottom: 12px;
+  max-width: 900px;
+}
+
+/* Goal block */
+.goal-block {
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #e3ebe9;
+  border-left: 4px solid #507b86;
+  padding: 4px 12px;
+  margin: 10px 0 14px;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.goal-block p {
+  margin: 4px 0;
+}
+
+.goal-block strong {
+  color: #507b86;
+  font-size: 18px;
+}
+
+/* Code heading */
+h3.code-heading {
+  font-size: 20px;
+  font-weight: 700;
+  color: #001B57;
+  border-left: 4px solid #001B57;
+  padding-left: 10px;
+}
+
+/* Outputs heading */
+h3.output-heading {
+  font-size: 20px;
+  font-weight: 700;
+  color: #001B57;
+  border-left: 4px solid #001B57;
+  padding-left: 10px;
+}
+
+/* Personal notes heading */
+h3.notes-heading {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* Personal notes subheadings */
+.callout-note p strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Personal notes content */
+.callout-note li,
+.callout-note p {
+  font-size: 14px;
+}
