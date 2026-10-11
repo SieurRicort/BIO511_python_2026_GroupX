@@ -1,23 +1,29 @@
 ---
-title: "Title"
-description: "Description"
-author: "Your name"
+title: "Learn how to install a new environment & perform bioinformatic analysis"
+description: "conda env + fasta files"
+author: "Sacha Ricort"
 
-date: "2026-10-08"
+date: today
 date-modified: today
 
 metadata:
   analysis-type: "Bioinformatics"
-  status: "Planned/In progress/On hold/Under review/Finished/Archived"
-  template-version: "0.3.0"
+  status: "In progress"
+  template-version: "0.2.2"
 ---
 
 ------------------------------------------------------------------------
 
 ### Setup
 
+```{bash}
+
+conda activate "$name"
+```
+
 ```{python}
-# Setup global variables, import some functions, do your stuff
+import sys
+print(sys.executable) 
 ```
 
 ```{python}
