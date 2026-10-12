@@ -18,6 +18,7 @@ def reverse_seq(file):
     """
     records = list(SeqIO.parse(file, "fasta")) # List of SeqRecord objects from input file
     reverse_records=[] # Empty list
+    
     for record in records: # Loops through SeqRecord
         forward = record.seq # Gets the sequence
         reverse=forward.reverse_complement() # Gets the reverse_completement
@@ -30,11 +31,19 @@ def reverse_seq(file):
         SeqIO.write(reverse_records, "dna_rc.fasta", "fasta") # Appends that list as an entry for a fasta file
     return reverse_records
 
+def check_reverse():
+    records = list(SeqIO.parse("dna_rc.fasta", "fasta"))
+
+    for record in records:
+        print("ID:", record.id)
+        print("Description:", record.description)
+
 def main():
     parser = build_parser()
     args = parser.parse_args()
 
     reverse_seq(args.file)
+    check_reverse()
 
 if __name__ == "__main__":
     main()
