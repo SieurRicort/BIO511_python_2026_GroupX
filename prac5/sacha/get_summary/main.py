@@ -1,12 +1,30 @@
 #!/usr/bin/env python3
 
-"""CLI entry point: build a CSV from JSON or text input, then print its
-summary statistics.
+"""
+Build a CSV from JSON or text input, then print its summary statistics.
+
+How to use this command:
+
+1. Create a CSV file from inline JSON data:
+   python3 main.py -f output.csv -df '[[1,2,3],[4,5,6]]'
+
+2. Create a CSV file from a JSON file:
+   python3 main.py -f output.csv -ff data.json
+
+3. Create a CSV file from a delimited text file:
+   python3 main.py -f output.csv -ff data.txt -del ','
+
+4. Specify the output directory:
+   python3 main.py -f output.csv -df '[[1,2],[3,4]]' -dir ./results
+
+5. Use tab delimiter
+   python3 main.py -f output.csv -ff data.txt -del $'\t'
+
 """
 
-from GITHUB.BIO511_python_2026_GroupX.prac5.sacha.get_summary.create_file import create_csv
-from GITHUB.BIO511_python_2026_GroupX.prac5.sacha.get_summary.summary_stats import get_stats
-from GITHUB.BIO511_python_2026_GroupX.prac5.sacha.get_summary.data_loader import load_data
+from create_file import create_csv
+from summary_stats import get_stats
+from data_loader import load_data
 
 import argparse
 import os
@@ -21,7 +39,7 @@ def build_parser():
     source.add_argument('-df', '--data', help='Row data as an inline JSON string, e.g. "[[1,2],[3,4]]"')
     source.add_argument('-ff', '--data-file', help='Path to a .json file, or a delimited .txt file with the rows')
 
-    parser.add_argument('-del', '--delimiter', choices=[',', ';', '\t', '|'], default=',', help='Delimiter for the CSV file and, if used, the input text file (default: comma)')
+    parser.add_argument('-del', '--delimiter', choices=[',', ';', '\t', '|'], default=',', help='Delimiter for the output CSV (default: comma)')
     parser.add_argument('-dir', '--directory', default=os.getcwd(), help='Existing output directory (default: current working directory)')
     return parser
 

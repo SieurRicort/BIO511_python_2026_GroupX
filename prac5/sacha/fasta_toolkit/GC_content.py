@@ -24,7 +24,7 @@ def GC_content(file, output):
             writer.writerow(["ID", "GC content (%)"]) # Sets the header as ID Legnth First nucleotides
     
             for record in records: # Loops through SeqRecords
-                writer.writerow([record.id, 100*gc_fraction(record.seq)]) # Creates a new row with seq.id and GC content
+                writer.writerow([record.id, round(100*gc_fraction(record.seq),1)]) # Creates a new row with seq.id and GC content
             return records
 
 def main():

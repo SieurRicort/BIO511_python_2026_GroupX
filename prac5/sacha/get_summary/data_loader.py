@@ -21,25 +21,29 @@ def load_from_json_file(file_path):
         return json.load(file)
  
  
-def load_from_text_file(file_path, delim):
-    """Read a plain delimited text file directly as rows (no JSON
-    encoding needed -- use the same delimiter as the output CSV).
-    """
-    with open(file_path, mode='r', newline='') as file:
-        reader = csv.reader(file, delimiter=delim)
+def load_from_text_file(file_path):
+    """Read a delimited text file, detecting its input delimiter."""
+    with open(file_path, mode="r", newline="") as file:
+        sample = file.read(4096)
+        file.seek(0)
+
+        try:
+            dialect = csv.Sniffer().sniff(
+                sample,
+                delimiters=",;\t|"
+            )
+            reader = csv.reader(file, dialect)
+        except csv.Error:
+            reader = csv.reader(file, delimiter=",")
+
         return list(reader)
  
  
 def load_data(args):
-    """Pick the right loader based on which CLI argument was supplied.
- 
-    args.data (inline JSON string) and args.data_file are a mutually
-    exclusive, required argparse group, so exactly one is not None.
-    """
     if args.data is not None:
         return load_from_json_string(args.data)
- 
+
     if args.data_file.endswith('.json'):
         return load_from_json_file(args.data_file)
- 
-    return load_from_text_file(args.data_file, args.delimiter)
+
+    return load_from_text_file(args.data_file)
