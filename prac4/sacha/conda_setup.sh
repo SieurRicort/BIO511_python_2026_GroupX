@@ -15,3 +15,6 @@ fi
 
 # Additional modules needed for specific analysis
 conda install -y -n "$name" -c conda-forge --override-channels pandas numpy biopython
+
+# Don't forget to conda activate Fasta before using python script
+# Or select python interpreter = Fasta in VSCode parameters
