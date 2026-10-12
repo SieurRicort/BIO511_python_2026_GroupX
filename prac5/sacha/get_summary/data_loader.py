@@ -1,4 +1,4 @@
-#!/home/sacha/miniconda3/envs/Fasta/bin/python3
+#!/usr/bin/env python3
 
 """Load the row data for the CSV from one of three sources: an inline
 JSON string, a .json file, or a plain delimited text file. Each loader

@@ -1,4 +1,4 @@
-#!/home/sacha/miniconda3/envs/Fasta/bin/python3
+#!/usr/bin/env python3
 
 #----------------
 # How to
