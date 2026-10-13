@@ -20,15 +20,3 @@ for index, item in enumerate(items, start=1):
 
 
 
-# While loops
-
-sequence = 'GATTACAGAACTGATAC'
-
-
-
-
-
-
-
-
-
