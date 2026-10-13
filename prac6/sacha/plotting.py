@@ -64,7 +64,7 @@ Penguin_fig1_plotnine.save(
 
 Penguin_fig2_plotnine = (
     ggplot(peng, aes(x="bill_length_mm"))
-    + geom_histogram()
+    + geom_histogram(binwidth=2)
     + labs(
         title="Histogram of bill length (mm)",
         x="Bill length (mm)",
