@@ -10,19 +10,19 @@ df = pd.read_csv(sys.argv[1])
 # python3 Part2.py data.csv
 
 # 2.1.b
-top20_df = df.iloc[0:20]
-print(top20_df)
+top20_df = df.iloc[0:19]
+#print(top20_df)
 
 # 2.1.c
 
 top20_long = pd.melt(
     top20_df,
     id_vars=["gene_name"],
-    value_vars=["fpkm_unstranded", "tpm_unstranded"],
+    value_vars=["fpkm_unstranded", "tpm_unstranded_int"],
     var_name="method",
     value_name="expression"
 )
-
+print(top20_long)
 top20_fig1_scatter= (
     ggplot(
         top20_long,
@@ -53,7 +53,7 @@ top20_fig2_scatter= (
         top20_df,
         aes(
             x='fpkm_unstranded',
-            y='tpm_unstranded'
+            y='tpm_unstranded_int'
         )
     )
     + geom_point()
