@@ -86,8 +86,13 @@ class Circle():
         else: print("Wrong input")
 
 
-for n in range(0,10,1):
-    f"circle_{n}" = Circle()
+circle=[] # Empty list
+
+for n in range(1,4,1): # Create a loop
+    circle.append(Circle()) # Store the object of Circle() in the list circle
+    print(circle[n].id) # Print the current object id
+
+print(Circle.count) # How many calls of Circle() so far
 
 # Classeption
 
