@@ -55,6 +55,7 @@ print(my_calc.quotient)
 # Circle
 
 class Circle():
+    count = 0 
     
     def __init__(self):
         self.radius = float(input('Enter the radius of the circle (float in cm): '))
@@ -62,6 +63,8 @@ class Circle():
         self.area = self.calc_area()
         self.input1 = input('What do you want to output (perimeter, area, both)? : ')
         self.ask_for_output()
+        Circle.count += 1
+        self.id = Circle.count
 
     def calc_perimeter(self):
         circumference = 2 * math.pi * self.radius
@@ -82,7 +85,9 @@ class Circle():
             print(f"The perimeter of the circle is {self.circumference} cm and the area of the circle is {self.area} cm²")
         else: print("Wrong input")
 
-circle1 = Circle()
+
+for n in range(0,10,1):
+    f"circle_{n}" = Circle()
 
 # Classeption
 
