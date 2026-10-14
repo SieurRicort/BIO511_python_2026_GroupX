@@ -19,9 +19,10 @@ top20_long = pd.melt(
     top20_df,
     id_vars=["gene_name"],
     value_vars=["fpkm_unstranded", "tpm_unstranded_int"],
-    var_name="method",
-    value_name="expression"
+    var_name="Y1 vs Y2",
+    value_name="Y"
 )
+
 print(top20_long)
 top20_fig1_scatter= (
     ggplot(

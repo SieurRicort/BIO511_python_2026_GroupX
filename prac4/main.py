@@ -1,9 +1,9 @@
-#!/usr/bin/env python3'-s'-s
+#!/usr/bin/env python3
 from premade_script import codons, exercise_function    
 import argparse
 import os
 import Bio
-from Bio import Seq
+from Bio import *
 
 
 #	 Call on in terminal;   
