@@ -15,6 +15,7 @@ top20_df = df.iloc[0:19]
 
 # 2.1.c
 
+# Melt the top 20 genes
 top20_long = pd.melt(
     top20_df,
     id_vars=["gene_name"],
@@ -23,14 +24,34 @@ top20_long = pd.melt(
     value_name="Y"
 )
 
-print(top20_long)
+# Sort genes by their maximum Y, descending,
+# then sort Y within each gene, descending
+gene_order = (
+    top20_long.groupby("gene_name")["Y"]
+    .max()
+    .sort_values(ascending=False)
+    .index
+)
+
+top20_long["gene_name"] = pd.Categorical(
+    top20_long["gene_name"],
+    categories=gene_order,
+    ordered=True
+)
+
+top20_long = top20_long.sort_values(
+    by=["gene_name", "Y"],
+    ascending=[True, False]
+)
+
+## Plot
 top20_fig1_scatter= (
     ggplot(
         top20_long,
         aes(
             x='gene_name',
-            y='expression',
-            color='method'
+            y='Y',
+            color='Y1 vs Y2'
         )
     )
     + geom_point()
