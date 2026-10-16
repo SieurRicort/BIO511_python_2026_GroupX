@@ -68,18 +68,31 @@ Describing Veterinarian: name, speciality, what are the apointments he's in char
 
 # Veterinarian
 class Vet():
-    apointments=[]
     def __init__(self, name, speciality, apointments, status):
         self.name = name
         self.speciality = speciality
         self.apointments = apointments
         self.status = status
+
         pass
 
+    
     def __str__(self):
         if not self.apointments:
             return(f"The veterinarian is named {self.name} and is specialised in {self.speciality}. That person is free of apointment.")
-        else: return(f"The veterinarian is named {self.name} and is specialised in {self.speciality}. Here is the next apointment of the veterinarian: {self.apointments}.")
+        else: dates = [appointment.date for appointment in self.apointments]
+        if not dates:
+            return(f"The veterinarian is named {self.name} and is specialised in {self.speciality}.\nHere is the next apointments of the veterinarian: {self.apointments.date}.")
+
+    def add_apt(self):
+        if self.apointments.veterinarian and not self.apointments:
+            self.apointments.append(self.apointments.date)
+        else: return(f"This veterinarian already covers an apointment that time.")
+
+
+    def remove_apt(self):
+
+
 
         
 
@@ -106,12 +119,13 @@ class Apt():
             return(f"The apointment has been cancelled.")
         else: return (f"The apointment was completed.")
 
-    def add_apt(self):
+    def add(self, date):
         if self.status == "scheduled":
             return(f"An apointment is already schedule for {self.animal.name}.")
         else: 
             self.status = "scheduled"
-            return (f"The apointment has been schedule for {self.date}.")
+            self.date = date
+            return (f"The apointment has been scheduled for {date}.")
 
     def complete(self):
         if self.status == "completed":
